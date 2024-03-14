@@ -4,8 +4,15 @@ title: "Kiera's website"
 
 Hi this is Kiera!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+# 
+```{r}
+library(tidyverse)
+```
+
 
 ```{r}
-1 + 1
+data <- read.csv("history-of-rock-spotify - Copy.csv")
+glimpse(data)
 ```
+
+
