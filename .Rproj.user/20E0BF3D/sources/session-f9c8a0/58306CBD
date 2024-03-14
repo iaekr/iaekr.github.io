@@ -1,11 +1,11 @@
 {
     "id": "58306CBD",
-    "path": null,
+    "path": "~/University/Y2S2/NM2207/Week 8/Project Submission- Week 8.Rmd",
     "project_path": null,
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1426484214",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1710436241368.0,
     "source_on_save": false,
     "relative_order": 4,
@@ -15,18 +15,18 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "17,0",
+        "cursorPosition": "9,0",
         "scrollLine": "4",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "257:215"
+        "rmdVisualModeLocation": "974:360.5"
     },
     "folds": "",
-    "lastKnownWriteTime": 32088581144051824,
-    "encoding": "",
+    "lastKnownWriteTime": 1710438615,
+    "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1710437865476,
+    "last_content_update": 1710438615742,
     "read_only": false,
     "read_only_alternatives": []
 }
