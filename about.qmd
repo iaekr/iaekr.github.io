@@ -6,8 +6,3 @@ Welcome to my website! My name is Kiera and I am a student taking NM2207.
 
 ![](images/clipboard-2718469527.png)
 
-```{r}
-1 + 1
-```
-
-# Data Visualization

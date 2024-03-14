@@ -2,17 +2,12 @@
 title: "Kiera's website"
 ---
 
-Hi this is Kiera!
+# Identified data set
 
-# 
+I have chosen the data set named "**History of Rock (1950-2020)"** by user Lucas Zamora from the website Kaggle. I will attempt to analyse the type **change over time** of the data set, looking at how different metrics such as danceability, acousticness and energy affect the popularity of rock songs, and how that metric may change over time.
+
 ```{r}
 library(tidyverse)
+my_data <- read.csv("history-of-rock-spotify - Copy.csv")
+glimpse(my_data)
 ```
-
-
-```{r}
-data <- read.csv("history-of-rock-spotify - Copy.csv")
-glimpse(data)
-```
-
-

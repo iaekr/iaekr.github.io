@@ -15,7 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1\. **Topic:** A question of your choice from any domain of your interest 
 
-
 2\. **Data sources:** They must be publicly available and can be curated from one or more sources to answer your question
 
 3\. **Story:** A write-up explaining the inferences drawn from the visualization
