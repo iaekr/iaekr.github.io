@@ -1,7 +1,7 @@
 {
-  "hash": "6bffe30d20be7c298fb7009c5e246757",
+  "hash": "d32c6d883a6b709180dabfe4b1312b96",
   "result": {
-    "markdown": "---\ntitle: \"About\"\n---\n\n\nWelcome to my website!\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n\n\n# Data Visualization\n",
+    "markdown": "---\ntitle: \"About\"\n---\n\n\nWelcome to my website! My name is Kiera and I am a student taking NM2207.\n\n![](images/clipboard-2718469527.png)\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n\n\n# Data Visualization\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
