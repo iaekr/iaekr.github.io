@@ -1,0 +1,23 @@
+---
+title: "Week 8 Diary Entry"
+author: "Kiera"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Diary entry Document 1
+
+**What is the topic you have finalized? (Answer in one or two sentences)**
+
+1\. **Topic:** A question of your choice from any domain of your interest 
+
+
+2\. **Data sources:** They must be publicly available and can be curated from one or more sources to answer your question
+
+3\. **Story:** A write-up explaining the inferences drawn from the visualization
+
+4\. **Visualization:** There should be at least two plots - could be different views of the same plot too 
