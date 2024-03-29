@@ -11,3 +11,8 @@ library(tidyverse)
 my_data <- read.csv("laptop_data.csv")
 glimpse(my_data)
 ```
+
+```{=html}
+<iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
+```
+
