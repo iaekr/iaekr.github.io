@@ -1,0 +1,24 @@
+---
+title: "Project week 9"
+author: "Kiera"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# I. Document
+
+Instead of on the topic of rock music as previously indicated in last week's diary entry, I have decided to change my database to "Laptop Prices Based on its specifications", uploaded onto kaggle by user Abdul Rehman Amer. This is because I did not know that we had to justify the importance of our question with evidence :( As such:
+
+## **(1)** What is the question that you are going to answer? 
+
+What is the correlation between laptop specifications and pricing information, and which specifications are most strongly associated with the price of laptops?
+
+## **(2)** Why is this an important question? 
+
+According to UNiDAYS, 97% of students said that their laptop was crucial to their course success. Before buying their laptop, the same survey showed that 89% of students do their research before purchasing. They also demonstrate price consciousness in their laptop purchases, with 92% using a discount code regularly, and one in three students being willing to wait for a discount to purchase the technology they want. As such, identifying which laptop specifications correlate with higher prices will allow students to plan their purchases out and better understand the tradeoffs they have to make financially should they desire specific components, and how much they can expect their desired laptop specs to cost typically, without being ripped off.
+
+## (3) Which rows and columns of the dataset will be used to answer this question?
+
+Laptop specifications such as screen size, CPU, RAM, memory, GPU, operating system, weight, as well as prices will be used to answer this question.
