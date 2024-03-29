@@ -4,10 +4,10 @@ title: "Kiera's website"
 
 # Identified data set
 
-I have chosen the data set named "**History of Rock (1950-2020)"** by user Lucas Zamora from the website Kaggle. I will attempt to analyse the type **change over time** of the data set, looking at how different metrics such as danceability, acousticness and energy affect the popularity of rock songs, and how that metric may change over time.
+I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: What is the correlation between laptop specifications and pricing information, and which specifications are most strongly associated with the price of laptops?
 
 ```{r}
 library(tidyverse)
-my_data <- read.csv("history-of-rock-spotify - Copy.csv")
+my_data <- read.csv("laptop_data.csv")
 glimpse(my_data)
 ```
