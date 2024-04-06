@@ -14,15 +14,9 @@ glimpse(laptop_data)
 
 From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
 
-```{r, echo=FALSE, eval=TRUE}
-total_brands_and_laptops <- glimpse(laptop_data) %>%
-  group_by(Company) %>%
-  tally()
-```
-
 Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data analysis below.
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, warnings=FALSE}
 total_brands_and_laptops <- glimpse(laptop_data) %>%
   group_by(Company) %>%
   tally()
@@ -64,7 +58,8 @@ tousd <- 0.012
 brand_quantity <- brand_quantity %>% 
   mutate(Price = Price * tousd)
 
-print(brand_quantity)
+#Printing horizontal bar graph
+ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat="identity")
 ```
 
 Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.\
@@ -72,8 +67,6 @@ Below is the plot of the **number of computers** each **company** produces again
 We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.
 
 ```{r, eval=TRUE, echo=FALSE}
-ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat="identity")
-
 ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
 ```
 

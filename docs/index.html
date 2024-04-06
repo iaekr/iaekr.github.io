@@ -163,26 +163,8 @@ $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81
 </div>
 </div>
 <p>From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,303
-Columns: 12
-$ X                &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,…
-$ Company          &lt;chr&gt; "Apple", "Apple", "HP", "Apple", "Apple", "Acer", "Ap…
-$ TypeName         &lt;chr&gt; "Ultrabook", "Ultrabook", "Notebook", "Ultrabook", "U…
-$ Inches           &lt;dbl&gt; 13.3, 13.3, 15.6, 15.4, 13.3, 15.6, 15.4, 13.3, 14.0,…
-$ ScreenResolution &lt;chr&gt; "IPS Panel Retina Display 2560x1600", "1440x900", "Fu…
-$ Cpu              &lt;chr&gt; "Intel Core i5 2.3GHz", "Intel Core i5 1.8GHz", "Inte…
-$ Ram              &lt;chr&gt; "8GB", "8GB", "8GB", "16GB", "8GB", "4GB", "16GB", "8…
-$ Memory           &lt;chr&gt; "128GB SSD", "128GB Flash Storage", "256GB SSD", "512…
-$ Gpu              &lt;chr&gt; "Intel Iris Plus Graphics 640", "Intel HD Graphics 60…
-$ OpSys            &lt;chr&gt; "macOS", "macOS", "No OS", "macOS", "macOS", "Windows…
-$ Weight           &lt;chr&gt; "1.37kg", "1.34kg", "1.86kg", "1.83kg", "1.37kg", "2.…
-$ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81, 21…</code></pre>
-</div>
-</div>
 <p>Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data analysis below.</p>
-<div class="cell">
+<div class="cell" data-warnings="false">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,303
 Columns: 12
@@ -235,21 +217,8 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 <p>Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,252 × 3
-   Company Weight Price
-   &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
- 1 Apple   1.37kg  857.
- 2 Apple   1.34kg  575.
- 3 HP      1.86kg  368.
- 4 Apple   1.83kg 1622.
- 5 Apple   1.37kg 1153.
- 6 Acer    2.1kg   256.
- 7 Apple   2.04kg 1368.
- 8 Apple   1.34kg  741.
- 9 Asus    1.3kg   956.
-10 Acer    1.6kg   492.
-# ℹ 1,242 more rows</code></pre>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Below is the plot of the <strong>number of computers</strong> each <strong>company</strong> produces against the <strong>price of each unit of computers</strong>. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.<br>
@@ -257,10 +226,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>For example, Lenovo produces one laptop that costs more than $3,000, unusual as their line of laptops usually range from less than $500 to less than $1,000. ASUS also produces two computers that cost around $1,500, despite its range of products largely falling under $1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.</p>
