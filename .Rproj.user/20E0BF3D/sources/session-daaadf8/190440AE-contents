@@ -12,10 +12,6 @@ my_data <- read.csv("laptop_data.csv")
 glimpse(my_data)
 ```
 
-```{=html}
-<iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
-```
-
 ```{r, echo=TRUE, eval=TRUE}
 library(tidyverse)
 library(fixerapi)
@@ -52,5 +48,8 @@ print(brand_quantity)
 ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat="identity")
 
 ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
+```
 
+```{=html}
+<iframe height="400" width="100%" frameborder="no" src="http://127.0.0.1:5728/"> </iframe>
 ```
