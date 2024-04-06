@@ -2,7 +2,9 @@ library(shiny)
 library(tidyverse)
 
 # Read in the dataset
-laptop_data <- read_csv("~/University/Y2S2/NM2207/Week 8/iaekr.github.io/laptop_data.csv")
+
+laptop_data <- read_csv("laptop_data.csv")
+laptop_data
 
 # Define UI for application
 ui <- fluidPage(

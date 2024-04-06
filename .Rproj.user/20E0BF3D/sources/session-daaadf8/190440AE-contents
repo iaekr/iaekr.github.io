@@ -51,5 +51,8 @@ ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
 ```
 
 ```{=html}
-<iframe height="400" width="100%" frameborder="no" src="http://127.0.0.1:5728/"> </iframe>
+<iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
 ```
+
+
+
