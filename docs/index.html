@@ -105,7 +105,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#identified-data-set" id="toc-identified-data-set" class="nav-link active" data-scroll-target="#identified-data-set">Identified data set</a></li>
+  <li><a href="#understanding-the-situation" id="toc-understanding-the-situation" class="nav-link active" data-scroll-target="#understanding-the-situation">Understanding the situation</a>
+  <ul class="collapse">
+  <li><a href="#identified-data-set" id="toc-identified-data-set" class="nav-link" data-scroll-target="#identified-data-set">Identified Data Set</a></li>
+  <li><a href="#identified-problem-statement" id="toc-identified-problem-statement" class="nav-link" data-scroll-target="#identified-problem-statement">Identified problem statement</a></li>
+  <li><a href="#identifying-the-evidence" id="toc-identifying-the-evidence" class="nav-link" data-scroll-target="#identifying-the-evidence">Identifying the Evidence</a></li>
+  <li><a href="#interpret-exhibits" id="toc-interpret-exhibits" class="nav-link" data-scroll-target="#interpret-exhibits">Interpret Exhibits</a></li>
+  <li><a href="#apply-concepts" id="toc-apply-concepts" class="nav-link" data-scroll-target="#apply-concepts">Apply concepts</a></li>
+  <li><a href="#reach-a-conclusion" id="toc-reach-a-conclusion" class="nav-link" data-scroll-target="#reach-a-conclusion">Reach a Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -129,9 +137,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="identified-data-set" class="level1">
-<h1>Identified data set</h1>
-<p>I have chosen the data set named “<strong>Laptop Prices Based on its specifications “</strong> by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?</p>
+<section id="understanding-the-situation" class="level1">
+<h1>Understanding the situation</h1>
+<section id="identified-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="identified-data-set">Identified Data Set</h2>
+<p>I have chosen the data set named “<strong>Laptop Prices Based on its specifications “</strong> by user Abdul Rehman Amer from the website Kaggle.</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -162,6 +172,15 @@ $ Weight           &lt;chr&gt; "1.37kg", "1.34kg", "1.86kg", "1.83kg", "1.37kg",
 $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81, 21…</code></pre>
 </div>
 </div>
+</section>
+<section id="identified-problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="identified-problem-statement">Identified problem statement</h2>
+<p>I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?</p>
+<p>As everyday students who may not understand laptops intimately, when we intend on buying a new laptop, we look at the different types of laptop brands or companies that we heard from word of mouth, or by briefly searching for reviews online. As such, only the most prominent or famous brands stick out (such as Apple or Lenovo), and we never gain a truly representative overview of the types of laptops out there.</p>
+<p>As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data.</p>
+</section>
+<section id="identifying-the-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-the-evidence">Identifying the Evidence</h2>
 <p>From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.</p>
 <p>Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data analysis below.</p>
 <div class="cell">
@@ -212,25 +231,37 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 8 Apple      21</code></pre>
 </div>
 </div>
+</section>
+<section id="interpret-exhibits" class="level2">
+<h2 class="anchored" data-anchor-id="interpret-exhibits">Interpret Exhibits</h2>
 <p>Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Below is the plot of the <strong>number of computers</strong> each <strong>company</strong> produces against the <strong>price of each unit of computers</strong>. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.<br>
-<br>
-We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.</p>
+<p>Below is the plot of the <strong>number of computers</strong> each <strong>company</strong> produces against the <strong>price of each unit of computers</strong>. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="apply-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="apply-concepts">Apply concepts</h2>
+<p>We observe some outliers in the data. In the above box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.</p>
 <p>For example, Lenovo produces one laptop that costs more than $3,000, unusual as their line of laptops usually range from less than $500 to less than $1,000. ASUS also produces two computers that cost around $1,500, despite its range of products largely falling under $1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.</p>
 <p>Below is the interactive boxplot that allows users to toggle between currencies of the prices, namely between IND (in which the original data came in), SGD and USD.</p>
 <iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
+</section>
+<section id="reach-a-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="reach-a-conclusion">Reach a Conclusion</h2>
+<p>As a result, we can see from our graphs that comparatively, Lenovo, Dell and HP are brands that produce the most variety of laptops. Surprisingly, Apple, a popular consumer option for laptops, produce the least variety of laptops. We learn through this data that while purchasing from Apple may be a tempting option to go for, as they are known for their versatility in function, there is a chance that Lenovo, HP or Dell would have produced a laptop that met a student’s specific needs.</p>
+<p>But why do we need to consider other laptop brands if Apple usually does the job? This is because Apple’s average price point, as seen in the second plot, is higher than the averages of the other companies. This indicates that there is a good chance that the laptop you are eyeing from Apple, while it may get the job done, may be excessively expensive. If one is tight on budget, it would be advisable for them to delve into Lenovo, HP or Dell for more varied options.</p>
+<p>MSI is a brand that has a higher mean price for their laptops than even Apple, making their laptops the most expensive out of all visible. However, this is likely because they produce gaming laptops, which tend to have higher specs for optimal gameplay, thus adding to the price point of their products.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

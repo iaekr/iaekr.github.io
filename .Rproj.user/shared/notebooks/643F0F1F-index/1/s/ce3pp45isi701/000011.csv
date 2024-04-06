@@ -13,4 +13,6 @@
 "0","  mutate(Price = Price * tousd)"
 "0",""
 "0","#Printing horizontal bar graph"
-"0","ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat=""identity"")"
+"0","ggplot(brand_nos, aes(x = n, y = Company)) +"
+"0","  labs(x=""Number of types of laptops"", y=""Company"")+"
+"0","  geom_bar(stat=""identity"")"

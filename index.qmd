@@ -2,15 +2,27 @@
 title: "Kiera's website"
 ---
 
-# Identified data set
+# Understanding the situation
 
-I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?
+## Identified Data Set
+
+I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
 library(tidyverse)
 laptop_data <- read.csv("laptop_data.csv")
 glimpse(laptop_data)
 ```
+
+## Identified problem statement
+
+I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?
+
+As everyday students who may not understand laptops intimately, when we intend on buying a new laptop, we look at the different types of laptop brands or companies that we heard from word of mouth, or by briefly searching for reviews online. As such, only the most prominent or famous brands stick out (such as Apple or Lenovo), and we never gain a truly representative overview of the types of laptops out there.
+
+As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data.
+
+## Identifying the Evidence
 
 From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
 
@@ -41,6 +53,9 @@ brand_nos <- laptop_data %>%
 
 print(brand_nos)
 ```
+
+## Interpret Exhibits
+
 Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -59,20 +74,32 @@ brand_quantity <- brand_quantity %>%
   mutate(Price = Price * tousd)
 
 #Printing horizontal bar graph
-ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat="identity")
+ggplot(brand_nos, aes(x = n, y = Company)) +
+  labs(x="Number of types of laptops", y="Company")+
+  geom_bar(stat="identity")
 ```
 
-Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.\
-\
-We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.
+Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.
 
 ```{r, eval=TRUE, echo=FALSE}
 ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
 ```
 
+## Apply concepts
+
+We observe some outliers in the data. In the above box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.
+
 For example, Lenovo produces one laptop that costs more than \$3,000, unusual as their line of laptops usually range from less than \$500 to less than \$1,000. ASUS also produces two computers that cost around \$1,500, despite its range of products largely falling under \$1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.
 
 Below is the interactive boxplot that allows users to toggle between currencies of the prices, namely between IND (in which the original data came in), SGD and USD.
+
 ```{=html}
 <iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
 ```
+## Reach a Conclusion
+
+As a result, we can see from our graphs that comparatively, Lenovo, Dell and HP are brands that produce the most variety of laptops. Surprisingly, Apple, a popular consumer option for laptops, produce the least variety of laptops. We learn through this data that while purchasing from Apple may be a tempting option to go for, as they are known for their versatility in function, there is a chance that Lenovo, HP or Dell would have produced a laptop that met a student's specific needs.
+
+But why do we need to consider other laptop brands if Apple usually does the job? This is because Apple's average price point, as seen in the second plot, is higher than the averages of the other companies. This indicates that there is a good chance that the laptop you are eyeing from Apple, while it may get the job done, may be excessively expensive. If one is tight on budget, it would be advisable for them to delve into Lenovo, HP or Dell for more varied options.
+
+MSI is a brand that has a higher mean price for their laptops than even Apple, making their laptops the most expensive out of all visible. However, this is likely because they produce gaming laptops, which tend to have higher specs for optimal gameplay, thus adding to the price point of their products.
