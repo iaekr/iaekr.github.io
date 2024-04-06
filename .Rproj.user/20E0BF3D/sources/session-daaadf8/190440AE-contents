@@ -6,7 +6,7 @@ title: "Kiera's website"
 
 I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?
 
-```{r}
+```{r, echo=FALSE, eval=TRUE}
 library(tidyverse)
 laptop_data <- read.csv("laptop_data.csv")
 glimpse(laptop_data)
@@ -14,17 +14,15 @@ glimpse(laptop_data)
 
 From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
 
-```{r}
+```{r, echo=FALSE, eval=TRUE}
 total_brands_and_laptops <- glimpse(laptop_data) %>%
   group_by(Company) %>%
   tally()
 ```
 
-```{r}
-message("Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of ", total_brands_and_laptops, " rows.")
-```
+Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data analysis below.
 
-```{r}
+```{r, echo=FALSE, eval=TRUE}
 total_brands_and_laptops <- glimpse(laptop_data) %>%
   group_by(Company) %>%
   tally()
@@ -32,9 +30,9 @@ total_brands_and_laptops <- glimpse(laptop_data) %>%
 nrow(total_brands_and_laptops)
 ```
 
-removed brands who produced less than 20 laptops from the dataset
+However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE}
 library(tidyverse)
 library(fixerapi)
 options(scipen = 999)
@@ -49,8 +47,9 @@ brand_nos <- laptop_data %>%
 
 print(brand_nos)
 ```
+Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.
 
-```{r, eval=TRUE, echo=TRUE}
+```{r, eval=TRUE, echo=FALSE}
 brand_quantity <- laptop_data %>% 
   select(Company, Weight, Price) %>% 
   group_by(Company) %>% 
@@ -72,7 +71,7 @@ Below is the plot of the **number of computers** each **company** produces again
 \
 We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.
 
-```{r, eval=TRUE, echo=TRUE}
+```{r, eval=TRUE, echo=FALSE}
 ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat="identity")
 
 ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
@@ -80,8 +79,7 @@ ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
 
 For example, Lenovo produces one laptop that costs more than \$3,000, unusual as their line of laptops usually range from less than \$500 to less than \$1,000. ASUS also produces two computers that cost around \$1,500, despite its range of products largely falling under \$1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.
 
+Below is the interactive boxplot that allows users to toggle between currencies of the prices, namely between IND (in which the original data came in), SGD and USD.
 ```{=html}
 <iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
 ```
-
-

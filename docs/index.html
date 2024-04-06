@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -167,7 +133,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Identified data set</h1>
 <p>I have chosen the data set named “<strong>Laptop Prices Based on its specifications “</strong> by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -180,8 +145,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>laptop_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"laptop_data.csv"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(laptop_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,303
 Columns: 12
@@ -201,9 +164,6 @@ $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81
 </div>
 <p>From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>total_brands_and_laptops <span class="ot">&lt;-</span> <span class="fu">glimpse</span>(laptop_data) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Company) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,303
 Columns: 12
@@ -221,16 +181,8 @@ $ Weight           &lt;chr&gt; "1.37kg", "1.34kg", "1.86kg", "1.83kg", "1.37kg",
 $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81, 21…</code></pre>
 </div>
 </div>
+<p>Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data analysis below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of "</span>, total_brands_and_laptops, <span class="st">" rows."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of c("Acer", "Apple", "Asus", "Chuwi", "Dell", "Fujitsu", "Google", "HP", "Huawei", "LG", "Lenovo", "MSI", "Mediacom", "Microsoft", "Razer", "Samsung", "Toshiba", "Vero", "Xiaomi")c(103, 21, 158, 3, 297, 3, 3, 274, 2, 3, 297, 54, 7, 6, 7, 9, 48, 4, 4) rows.</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>total_brands_and_laptops <span class="ot">&lt;-</span> <span class="fu">glimpse</span>(laptop_data) <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Company) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,303
 Columns: 12
@@ -247,21 +199,15 @@ $ OpSys            &lt;chr&gt; "macOS", "macOS", "No OS", "macOS", "macOS", "Win
 $ Weight           &lt;chr&gt; "1.37kg", "1.34kg", "1.86kg", "1.83kg", "1.37kg", "2.…
 $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81, 21…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(total_brands_and_laptops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 19</code></pre>
 </div>
 </div>
-<p>removed brands who produced less than 20 laptops from the dataset</p>
+<p>However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixerapi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'fixerapi' was built under R version 4.3.3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>laptop_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"laptop_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 Rows: 1303 Columns: 12
@@ -273,13 +219,6 @@ Rows: 1303 Columns: 12
 Specify the column types or set `show_col_types = FALSE` to quiet this message.
 • `` -&gt; `...1`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>brand_nos <span class="ot">&lt;-</span> laptop_data <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Company) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(brand_nos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
   Company     n
@@ -294,22 +233,8 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 8 Apple      21</code></pre>
 </div>
 </div>
+<p>Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>brand_quantity <span class="ot">&lt;-</span> laptop_data <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Company, Weight, Price) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Company) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(count<span class="sc">&gt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>count)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>tosgd <span class="ot">&lt;-</span> <span class="fl">0.016</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>tousd <span class="ot">&lt;-</span> <span class="fl">0.012</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>brand_quantity <span class="ot">&lt;-</span> brand_quantity <span class="sc">%&gt;%</span> </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Price =</span> Price <span class="sc">*</span> tousd)</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(brand_quantity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,252 × 3
    Company Weight Price
@@ -331,16 +256,15 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <br>
 We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(brand_nos, <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> Company)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(brand_quantity, <span class="fu">aes</span>(<span class="at">x =</span> Price, <span class="at">y =</span> Company)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>For example, Lenovo produces one laptop that costs more than $3,000, unusual as their line of laptops usually range from less than $500 to less than $1,000. ASUS also produces two computers that cost around $1,500, despite its range of products largely falling under $1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.</p>
+<p>Below is the interactive boxplot that allows users to toggle between currencies of the prices, namely between IND (in which the original data came in), SGD and USD.</p>
 <iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
 
 
