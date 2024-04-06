@@ -6,7 +6,7 @@ title: "Kiera's website"
 
 I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, warnings=FALSE}
 library(tidyverse)
 laptop_data <- read.csv("laptop_data.csv")
 glimpse(laptop_data)
@@ -26,7 +26,7 @@ nrow(total_brands_and_laptops)
 
 However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, warnings=FALSE}
 library(tidyverse)
 library(fixerapi)
 options(scipen = 999)
