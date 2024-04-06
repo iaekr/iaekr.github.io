@@ -1,2 +1,0 @@
-"0",""
-"0","ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat=""identity"")"

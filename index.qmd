@@ -4,13 +4,35 @@ title: "Kiera's website"
 
 # Identified data set
 
-I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: What is the correlation between laptop specifications and pricing information, and which specifications are most strongly associated with the price of laptops?
+I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle. I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?
 
 ```{r}
 library(tidyverse)
-my_data <- read.csv("laptop_data.csv")
-glimpse(my_data)
+laptop_data <- read.csv("laptop_data.csv")
+glimpse(laptop_data)
 ```
+
+From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
+
+```{r}
+total_brands_and_laptops <- glimpse(laptop_data) %>%
+  group_by(Company) %>%
+  tally()
+```
+
+```{r}
+message("Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of ", total_brands_and_laptops, " rows.")
+```
+
+```{r}
+total_brands_and_laptops <- glimpse(laptop_data) %>%
+  group_by(Company) %>%
+  tally()
+
+nrow(total_brands_and_laptops)
+```
+
+removed brands who produced less than 20 laptops from the dataset
 
 ```{r, echo=TRUE, eval=TRUE}
 library(tidyverse)
@@ -44,15 +66,22 @@ brand_quantity <- brand_quantity %>%
   mutate(Price = Price * tousd)
 
 print(brand_quantity)
+```
 
+Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.\
+\
+We observe some outliers in the data as well. In this box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.
+
+```{r, eval=TRUE, echo=TRUE}
 ggplot(brand_nos, aes(x = n, y = Company)) + geom_bar(stat="identity")
 
 ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
 ```
 
+For example, Lenovo produces one laptop that costs more than \$3,000, unusual as their line of laptops usually range from less than \$500 to less than \$1,000. ASUS also produces two computers that cost around \$1,500, despite its range of products largely falling under \$1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.
+
 ```{=html}
 <iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
 ```
-
 
 

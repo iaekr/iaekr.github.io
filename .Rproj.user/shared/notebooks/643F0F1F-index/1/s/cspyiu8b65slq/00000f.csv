@@ -1,0 +1,27 @@
+"0","total_brands_and_laptops <- glimpse(laptop_data) %>%
+  group_by(Company) %>%
+  tally()
+"
+"1","Rows: 1,303"
+"1",""
+"1","
+"
+"1","Columns: 12"
+"1",""
+"1","
+"
+"1","$ ...1             [3m[38;5;246m<dbl>[39m[23m 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,…
+$ Company          [3m[38;5;246m<chr>[39m[23m ""Apple"", ""Apple"", ""HP"", ""Apple"", ""App…
+$ TypeName         [3m[38;5;246m<chr>[39m[23m ""Ultrabook"", ""Ultrabook"", ""Notebook"",…
+$ Inches           [3m[38;5;246m<dbl>[39m[23m 13.3, 13.3, 15.6, 15.4, 13.3, 15.6, 1…
+$ ScreenResolution [3m[38;5;246m<chr>[39m[23m ""IPS Panel Retina Display 2560x1600"",…
+$ Cpu              [3m[38;5;246m<chr>[39m[23m ""Intel Core i5 2.3GHz"", ""Intel Core i…
+$ Ram              [3m[38;5;246m<chr>[39m[23m ""8GB"", ""8GB"", ""8GB"", ""16GB"", ""8GB"", ""…
+$ Memory           [3m[38;5;246m<chr>[39m[23m ""128GB SSD"", ""128GB Flash Storage"", ""…
+$ Gpu              [3m[38;5;246m<chr>[39m[23m ""Intel Iris Plus Graphics 640"", ""Inte…
+$ OpSys            [3m[38;5;246m<chr>[39m[23m ""macOS"", ""macOS"", ""No OS"", ""macOS"", ""…
+$ Weight           [3m[38;5;246m<chr>[39m[23m ""1.37kg"", ""1.34kg"", ""1.86kg"", ""1.83kg…
+$ Price            [3m[38;5;246m<dbl>[39m[23m 71378.68, 47895.52, 30636.00, 135195.…"
+"1",""
+"1","
+"
