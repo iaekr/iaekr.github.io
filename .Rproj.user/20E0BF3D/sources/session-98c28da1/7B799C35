@@ -3,7 +3,7 @@
     "path": "~/University/Y2S2/NM2207/Week 8/iaekr.github.io/personal_app/app.R",
     "project_path": "personal_app/app.R",
     "type": "r_source",
-    "hash": "2566750079",
+    "hash": "4208424620",
     "contents": "",
     "dirty": false,
     "created": 1712374100307.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "5,25",
-        "scrollLine": "1"
+        "cursorPosition": "21,1",
+        "scrollLine": "21"
     },
     "folds": "",
-    "lastKnownWriteTime": 1712376660,
+    "lastKnownWriteTime": 1712381877,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1712376660318,
+    "last_content_update": 1712381877556,
     "read_only": false,
     "read_only_alternatives": []
 }

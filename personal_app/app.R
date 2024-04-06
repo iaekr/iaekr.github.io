@@ -14,8 +14,7 @@ ui <- fluidPage(
       selectInput("currency", "Select Currency:",
                   choices = c("SGD", "INR", "USD"),
                   selected = "SGD"),
-      sliderInput("samplesize", "Sample Size:", min = 100, max = 10000, value = 1000)
-    ),
+      ),
     mainPanel(
       plotOutput("distPlot")
     )
