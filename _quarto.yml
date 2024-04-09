@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "iaekr.github.io"
+  title: "Kiera's Data Story"
   navbar:
     left:
       - href: index.qmd
@@ -12,7 +12,7 @@ website:
 
 format:
   html:
-    theme: slate
+    theme: zephyr
     css: styles.css
     toc: true
 
