@@ -72,20 +72,26 @@ brand_nos <- laptop_data %>%
   filter(n>10) %>% 
   arrange(desc(n))
 
+brand_colors <- c(
+  "Asus" = "#d3fad6", "HP" = "#d1efb5", "Apple" = "#edeba0", "Dell" = "#c3c48d", "Lenovo" = "#928c6f", "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", "Google" = "#ffc6ac","Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac","Mediacom" = "#acf2ff", "LG" = "#acddff", "Chuwi" = "#acaaff"
+)
 
-ggplot(brand_nos, aes(x = reorder(Company, n), y = n)) +
-  geom_bar(stat = "identity", fill = "skyblue") +
+ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
+  geom_bar(stat = "identity") +
   labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        plot.margin = margin(1, 1, 1, 1, "cm")) 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = brand_colors)
+
+
 ```
 ```{r}
 
-ggplot(brand_nos, aes(x = fct_reorder(Company, n), y = n)) +
+ggplot(brand_nos, aes(x = fct_reorder(Company, n), y = n, fill = Company)) +
   labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
-  geom_bar(stat = "identity", fill = "skyblue") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        plot.margin = margin(1, 1, 1, 1, "cm")) 
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = brand_colors)
+
 ```
 
 
@@ -119,11 +125,13 @@ brand_quantity <- brand_quantity %>%
   mutate(Price = Price * tousd)
 
 #ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
-ggplot(brand_quantity, aes(x = Price, y = reorder(Company, Price))) +
-  geom_boxplot(fill = "skyblue") +
+ggplot(brand_quantity, aes(x = Price, y = reorder(Company, Price), fill = Company)) +
+  geom_boxplot() +
   labs(x = "Price", y = "Company") +
   theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
-  coord_flip()  
+  coord_flip() +
+  scale_fill_manual(values = brand_colors)
+
 
 ```
 
