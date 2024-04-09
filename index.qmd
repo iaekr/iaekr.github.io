@@ -91,13 +91,6 @@ brand_colors <- c(
   "LG" = "#acddff", "Chuwi" = "#acaaff"
 )
 
-# Use the new colors in your plots
-ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n, fill = Company)) +
-  geom_bar(stat = "identity") +
-  labs(x = "Company", y = "Number of Laptop Types", title = "Number of Laptop Types by Company") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-
 #only 9 brands
 ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
   geom_bar(stat = "identity") +
