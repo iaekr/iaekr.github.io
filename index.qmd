@@ -60,10 +60,10 @@ brand_colors <- c(
   "LG" = "#acddff", "Chuwi" = "#acaaff"
 )
 ```
-```{r}
+```{r, echo=FALSE}
 # Use the new colors in your plots
 ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n, fill = Company)) +
-  geom_bar(stat = "identity") +
+  geom_bar(stat = "identity", show.legend=FALSE) +
   labs(x = "Company", y = "Number of Laptop Types", title = "Number of Laptop Types by Company") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
@@ -150,6 +150,9 @@ ggplot(brand_quantity, aes(x = Price, y = reorder(Company, Price), fill = Compan
 ```
 
 ## Apply concepts
+```{r}
+#talk about the difference in the ascending order of box plots and the ascending order of number of laptops produced by each company
+```
 
 We observe some outliers in the data. In the above box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.
 
