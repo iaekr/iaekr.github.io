@@ -49,16 +49,24 @@ total_brands_and_laptops <- glimpse(laptop_data) %>%
   group_by(Company) %>%
   tally()
 
+# Define new colors for the companies
 brand_colors <- c(
-  "Asus" = "#d3fad6", "HP" = "#d1efb5", "Apple" = "#edeba0", "Dell" = "#c3c48d", "Lenovo" = "#928c6f", "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", "Google" = "#ffc6ac","Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac","Mediacom" = "#acf2ff", "LG" = "#acddff", "Chuwi" = "#acaaff"
+  "Asus" = "#eac435", "HP" = "#345995", "Apple" = "#03cea4", 
+  "Dell" = "#fb4d3d", "Lenovo" = "#ca1551", 
+  "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", 
+  "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", 
+  "Google" = "#ffc6ac", "Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", 
+  "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac", "Mediacom" = "#acf2ff", 
+  "LG" = "#acddff", "Chuwi" = "#acaaff"
 )
+```
+```{r}
+# Use the new colors in your plots
 ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n, fill = Company)) +
   geom_bar(stat = "identity") +
   labs(x = "Company", y = "Number of Laptop Types", title = "Number of Laptop Types by Company") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
-
-
 ```
 
 
@@ -72,25 +80,31 @@ brand_nos <- laptop_data %>%
   filter(n>10) %>% 
   arrange(desc(n))
 
+# Define new colors for the companies
 brand_colors <- c(
-  "Asus" = "#d3fad6", "HP" = "#d1efb5", "Apple" = "#edeba0", "Dell" = "#c3c48d", "Lenovo" = "#928c6f", "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", "Google" = "#ffc6ac","Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac","Mediacom" = "#acf2ff", "LG" = "#acddff", "Chuwi" = "#acaaff"
+  "Asus" = "#eac435", "HP" = "#345995", "Apple" = "#03cea4", 
+  "Dell" = "#fb4d3d", "Lenovo" = "#ca1551", 
+  "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", 
+  "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", 
+  "Google" = "#ffc6ac", "Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", 
+  "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac", "Mediacom" = "#acf2ff", 
+  "LG" = "#acddff", "Chuwi" = "#acaaff"
 )
 
+# Use the new colors in your plots
+ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n, fill = Company)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Company", y = "Number of Laptop Types", title = "Number of Laptop Types by Company") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+#only 9 brands
 ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
   geom_bar(stat = "identity") +
   labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
 
-
-```
-```{r}
-
-ggplot(brand_nos, aes(x = fct_reorder(Company, n), y = n, fill = Company)) +
-  labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_fill_manual(values = brand_colors)
 
 ```
 
