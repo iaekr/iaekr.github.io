@@ -13,8 +13,12 @@ laptop_data <- read.csv("laptop_data.csv")
 suppressMessages({
   suppressWarnings({
     library(tidyverse)
-    library(tidyverse)
     library(fixerapi)
+    library(ggplot2)
+    library(dplyr)
+    library(readr)
+
+options(scipen = 999)
 glimpse(laptop_data)
   })
 })
@@ -38,21 +42,23 @@ As this is typically a big expenditure for students, students should be well inf
 
 From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
 
-Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data analysis below.
+Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data visualisation below.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
 total_brands_and_laptops <- glimpse(laptop_data) %>%
   group_by(Company) %>%
   tally()
 
-nrow(total_brands_and_laptops)
-#Use another visualisation instead of just showing the nrow
+ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Company", y = "Number of Laptop Types", title = "Number of Laptop Types by Company") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 ```
 
 However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
-options(scipen = 999)
 
 laptop_data <- read_csv("laptop_data.csv")
 
@@ -62,13 +68,36 @@ brand_nos <- laptop_data %>%
   filter(n>10) %>% 
   arrange(desc(n))
 
-print(brand_nos)
-#Graph again
+
+ggplot(brand_nos, aes(x = reorder(Company, n), y = n)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.margin = margin(1, 1, 3, 1, "cm")) 
 ```
+```{r}
+
+ggplot(brand_nos, aes(x = fct_reorder(Company, n), y = n)) +
+  labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.margin = margin(1, 1, 1, 1, "cm")) 
+```
+
 
 ## Interpret Exhibits
 
 Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.
+
+```{r, eval=TRUE, echo=FALSE}
+
+#Printing horizontal bar graph
+ggplot(brand_nos, aes(x = n, y = Company)) +
+  labs(x="Number of types of laptops", y="Company")+
+  geom_bar(stat="identity")
+```
+
+Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.
 
 ```{r, eval=TRUE, echo=FALSE}
 brand_quantity <- laptop_data %>% 
@@ -85,16 +114,13 @@ tousd <- 0.012
 brand_quantity <- brand_quantity %>% 
   mutate(Price = Price * tousd)
 
-#Printing horizontal bar graph
-ggplot(brand_nos, aes(x = n, y = Company)) +
-  labs(x="Number of types of laptops", y="Company")+
-  geom_bar(stat="identity")
-```
+#ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
+ggplot(brand_quantity, aes(x = Price, y = reorder(Company, Price))) +
+  geom_boxplot(fill = "skyblue") +
+  labs(x = "Price", y = "Company") +
+  theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+  coord_flip()  
 
-Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.
-
-```{r, eval=TRUE, echo=FALSE}
-ggplot(brand_quantity, aes(x = Price, y = Company)) + geom_boxplot()
 ```
 
 ## Apply concepts
