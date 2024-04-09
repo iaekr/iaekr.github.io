@@ -227,12 +227,6 @@ $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the new colors in your plots</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(total_brands_and_laptops, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Company, n), <span class="at">y =</span> n, <span class="at">fill =</span> Company)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Company"</span>, <span class="at">y =</span> <span class="st">"Number of Laptop Types"</span>, <span class="at">title =</span> <span class="st">"Number of Laptop Types by Company"</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> brand_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -264,6 +258,9 @@ $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81
 </section>
 <section id="apply-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="apply-concepts">Apply concepts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#talk about the difference in the ascending order of box plots and the ascending order of number of laptops produced by each company</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We observe some outliers in the data. In the above box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.</p>
 <p>For example, Lenovo produces one laptop that costs more than $3,000, unusual as their line of laptops usually range from less than $500 to less than $1,000. ASUS also produces two computers that cost around $1,500, despite its range of products largely falling under $1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.</p>
 <p>Below is the interactive boxplot that allows users to toggle between currencies of the prices, namely between IND (in which the original data came in), SGD and USD.</p>
