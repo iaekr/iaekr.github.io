@@ -2,14 +2,13 @@
 title: "Kiera's website"
 ---
 
-# Understanding the situation
+# NM2207 Final Data Story
 
 ## Identified Data Set
 
 I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
-library(tidyverse)
 laptop_data <- read.csv("laptop_data.csv")
 glimpse(laptop_data)
 ```
