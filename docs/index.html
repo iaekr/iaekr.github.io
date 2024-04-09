@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -166,6 +200,9 @@ $ Price            &lt;dbl&gt; 71378.68, 47895.52, 30636.00, 135195.34, 96095.81
 <p>I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?</p>
 <p>As everyday students who may not understand laptops intimately, when we intend on buying a new laptop, we look at the different types of laptop brands or companies that we heard from word of mouth, or by briefly searching for reviews online. As such, only the most prominent or famous brands stick out (such as Apple or Lenovo), and we never gain a truly representative overview of the types of laptops out there.</p>
 <p>As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make this less wordy. Use graphs or visualisations to do this instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="identifying-the-evidence" class="level2">
 <h2 class="anchored" data-anchor-id="identifying-the-evidence">Identifying the Evidence</h2>
@@ -225,13 +262,13 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <p>Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Below is the plot of the <strong>number of computers</strong> each <strong>company</strong> produces against the <strong>price of each unit of computers</strong>. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -247,6 +284,9 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <p>As a result, we can see from our graphs that comparatively, Lenovo, Dell and HP are brands that produce the most variety of laptops. Surprisingly, Apple, a popular consumer option for laptops, produce the least variety of laptops. We learn through this data that while purchasing from Apple may be a tempting option to go for, as they are known for their versatility in function, there is a chance that Lenovo, HP or Dell would have produced a laptop that met a student’s specific needs.</p>
 <p>But why do we need to consider other laptop brands if Apple usually does the job? This is because Apple’s average price point, as seen in the second plot, is higher than the averages of the other companies. This indicates that there is a good chance that the laptop you are eyeing from Apple, while it may get the job done, may be excessively expensive. If one is tight on budget, it would be advisable for them to delve into Lenovo, HP or Dell for more varied options.</p>
 <p>MSI is a brand that has a higher mean price for their laptops than even Apple, making their laptops the most expensive out of all visible. However, this is likely because they produce gaming laptops, which tend to have higher specs for optimal gameplay, thus adding to the price point of their products.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make some sort of visualisation?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

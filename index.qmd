@@ -18,6 +18,8 @@ suppressMessages({
 glimpse(laptop_data)
   })
 })
+
+#See if you can turn this presentation into a graph of sorts
 ```
 
 ## Identified problem statement
@@ -26,7 +28,11 @@ I will attempt to answer the question: How many types of laptops do each brand m
 
 As everyday students who may not understand laptops intimately, when we intend on buying a new laptop, we look at the different types of laptop brands or companies that we heard from word of mouth, or by briefly searching for reviews online. As such, only the most prominent or famous brands stick out (such as Apple or Lenovo), and we never gain a truly representative overview of the types of laptops out there.
 
-As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data.
+As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data. 
+```{r}
+#make this less wordy. Use graphs or visualisations to do this instead
+```
+
 
 ## Identifying the Evidence
 
@@ -40,6 +46,7 @@ total_brands_and_laptops <- glimpse(laptop_data) %>%
   tally()
 
 nrow(total_brands_and_laptops)
+#Use another visualisation instead of just showing the nrow
 ```
 
 However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.
@@ -56,6 +63,7 @@ brand_nos <- laptop_data %>%
   arrange(desc(n))
 
 print(brand_nos)
+#Graph again
 ```
 
 ## Interpret Exhibits
@@ -107,3 +115,7 @@ As a result, we can see from our graphs that comparatively, Lenovo, Dell and HP 
 But why do we need to consider other laptop brands if Apple usually does the job? This is because Apple's average price point, as seen in the second plot, is higher than the averages of the other companies. This indicates that there is a good chance that the laptop you are eyeing from Apple, while it may get the job done, may be excessively expensive. If one is tight on budget, it would be advisable for them to delve into Lenovo, HP or Dell for more varied options.
 
 MSI is a brand that has a higher mean price for their laptops than even Apple, making their laptops the most expensive out of all visible. However, this is likely because they produce gaming laptops, which tend to have higher specs for optimal gameplay, thus adding to the price point of their products.
+```{r}
+#make some sort of visualisation?
+```
+
