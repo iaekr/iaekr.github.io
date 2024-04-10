@@ -139,15 +139,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introducing-our-data" id="toc-introducing-our-data" class="nav-link active" data-scroll-target="#introducing-our-data">Introducing: Our data</a>
+  <li><a href="#laptops" id="toc-laptops" class="nav-link active" data-scroll-target="#laptops">Laptops…</a>
+  <ul class="collapse">
+  <li><a href="#introducing-our-data" id="toc-introducing-our-data" class="nav-link" data-scroll-target="#introducing-our-data">Introducing: Our data</a>
   <ul class="collapse">
   <li><a href="#number-of-laptop-types-by-company" id="toc-number-of-laptop-types-by-company" class="nav-link" data-scroll-target="#number-of-laptop-types-by-company">Number of Laptop Types by Company</a></li>
   </ul></li>
-  <li><a href="#identified-problem-statement" id="toc-identified-problem-statement" class="nav-link" data-scroll-target="#identified-problem-statement">Identified problem statement</a></li>
+  <li><a href="#more-analysis" id="toc-more-analysis" class="nav-link" data-scroll-target="#more-analysis">More analysis</a></li>
   <li><a href="#identifying-the-evidence" id="toc-identifying-the-evidence" class="nav-link" data-scroll-target="#identifying-the-evidence">Identifying the Evidence</a></li>
   <li><a href="#interpret-exhibits" id="toc-interpret-exhibits" class="nav-link" data-scroll-target="#interpret-exhibits">Interpret Exhibits</a></li>
   <li><a href="#apply-concepts" id="toc-apply-concepts" class="nav-link" data-scroll-target="#apply-concepts">Apply concepts</a></li>
   <li><a href="#reach-a-conclusion" id="toc-reach-a-conclusion" class="nav-link" data-scroll-target="#reach-a-conclusion">Reach a Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -171,7 +174,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>#Laptops…</p>
+<section id="laptops" class="level1">
+<h1>Laptops…</h1>
 <p>Ever got tired of your basic ASUS or HP laptop? Want to look into other options aside from Apple? Or are you simply curious about how many laptops can a company possibly produce?</p>
 <p>As budget-strapped students, buying our next laptop is a costly investment we should consider wisely. However, as someone who is not a tech expert and struggled in researching for a new laptop, I found it difficult to start my search because I was not well-versed with what laptops there were. I relied hugely on word of mouth and salesman recommendation to decide on my current laptop, but there may have been better options out there I was simply unaware of!</p>
 <p>Thus, welcome to my data story, where I take you through the analysis of a csv file, where we can both gain some insights about laptop brands, specifications, prices, and even its weight! Through this journey, I hope we both gain an awareness of what types of laptops there are, and what categories to begin our search in the next time we find ourselves in need of a laptop.</p>
@@ -329,24 +333,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>###Number of Laptop Types by Category of Laptops While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.</p>
+<p>However, there are some companies that produced very little laptops, and they were not relevant to the total analysis. I removed brands who produced less than 20 laptops from the data set.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>###Number of Laptop Types by Category of Laptops While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <p>Unsurprisingly, the Notebook category wins by a landslide in terms of quantity produced, with more than 650 types produced. On the other hand, Netbooks and Workstations are lesser produced, and perhaps this means there is a small demand for such laptops!</p>
 <p>Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!</p>
-</section>
-</section>
-<section id="identified-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="identified-problem-statement">Identified problem statement</h2>
-<p>I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?</p>
-<p>As everyday students who may not understand laptops intimately, when we intend on buying a new laptop, we look at the different types of laptop brands or companies that we heard from word of mouth, or by briefly searching for reviews online. As such, only the most prominent or famous brands stick out (such as Apple or Lenovo), and we never gain a truly representative overview of the types of laptops out there.</p>
-<p>As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data.</p>
+<p>###Specifications Now, I am also curious about the spread of specifications, such as CPU, RAM, Memory, GPU, OpSys. Let’s look at how the laptops are distributed across different CPUs and RAMs.</p>
+<p>####CPU Given that there are a total of 118 unique CPUs, let’s look at the more popular CPU systems; i.e.&nbsp;the CPUs that have been used in more than 40 laptops.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make this less wordy. Use graphs or visualisations to do this instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+<p>####RAM No cleaning is needed for RAM – let’s look at how many laptops are produced in</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Looks like the most popular RAM categories are 4GB, 8GB and 16GB! How interesting that their in-between values like 6GB, 12GB etc are nowhere near as popular.</p>
+</section>
+</section>
+<section id="more-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="more-analysis">More analysis</h2>
 </section>
 <section id="identifying-the-evidence" class="level2">
 <h2 class="anchored" data-anchor-id="identifying-the-evidence">Identifying the Evidence</h2>
@@ -355,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -364,20 +382,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Below is the plot of the <strong>number of computers</strong> each <strong>company</strong> produces against the <strong>price of each unit of computers</strong>. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="apply-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="apply-concepts">Apply concepts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#talk about the difference in the ascending order of box plots and the ascending order of number of laptops produced by each company</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#talk about the difference in the ascending order of box plots and the ascending order of number of laptops produced by each company</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We observe some outliers in the data. In the above box plot, while the whiskers of each box vary, there are some data points that indiciate one or two abnormally expensive computers that lie beyond even the maximum value of the range of computers.</p>
 <p>For example, Lenovo produces one laptop that costs more than $3,000, unusual as their line of laptops usually range from less than $500 to less than $1,000. ASUS also produces two computers that cost around $1,500, despite its range of products largely falling under $1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.</p>
@@ -390,10 +408,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>But why do we need to consider other laptop brands if Apple usually does the job? This is because Apple’s average price point, as seen in the second plot, is higher than the averages of the other companies. This indicates that there is a good chance that the laptop you are eyeing from Apple, while it may get the job done, may be excessively expensive. If one is tight on budget, it would be advisable for them to delve into Lenovo, HP or Dell for more varied options.</p>
 <p>MSI is a brand that has a higher mean price for their laptops than even Apple, making their laptops the most expensive out of all visible. However, this is likely because they produce gaming laptops, which tend to have higher specs for optimal gameplay, thus adding to the price point of their products.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make some sort of visualisation?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make some sort of visualisation?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
