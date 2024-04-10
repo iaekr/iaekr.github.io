@@ -130,7 +130,9 @@ ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
   scale_fill_manual(values = brand_colors)
 ```
 
-###Number of Laptop Types by Category of Laptops While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
+### Number of Laptop Types by Category of Laptops
+
+While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
 
 ```{r, echo=FALSE, eval=TRUE}
 typename_colour <- c(
@@ -149,10 +151,12 @@ Unsurprisingly, the Notebook category wins by a landslide in terms of quantity p
 
 Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!
 
-###Specifications
+### Specifications
+
 Now, I am also curious about the spread of specifications, such as CPU, RAM, Memory, GPU, OpSys. Let's look at how the laptops are distributed across different CPUs and RAMs.
 
-####CPU
+#### CPU
+
 Given that there are a total of 118 unique CPUs, let's look at the more popular CPU systems; i.e. the CPUs that have been used in more than 40 laptops.
 
 ```{r, echo=FALSE, eval=TRUE}
@@ -168,8 +172,10 @@ ggplot(filtered_data, aes(x = Cpu)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-####RAM
+#### RAM
+
 No cleaning is needed for RAM -- let's look at how many laptops are produced in
+
 ```{r, eval=TRUE, echo=FALSE}
 # Define the order of RAM categories
 ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
@@ -184,11 +190,10 @@ ggplot(laptop_data, aes(x = Ram)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
+
 Looks like the most popular RAM categories are 4GB, 8GB and 16GB! How interesting that their in-between values like 6GB, 12GB etc are nowhere near as popular.
 
 ## More analysis
-
-
 
 ## Identifying the Evidence
 
