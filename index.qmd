@@ -2,16 +2,15 @@
 title: "NM2207 Final Data Story"
 ---
 
-#Laptops...
+# Laptops...
 
-Ever got tired of your basic ASUS or HP laptop? Want to look into other options aside from Apple? Or are you simply curious about how many laptops can a company possibly produce? 
+Ever got tired of your basic ASUS or HP laptop? Want to look into other options aside from Apple? Or are you simply curious about how many laptops can a company possibly produce?
 
-As budget-strapped students, buying our next laptop is a costly investment we should consider wisely. However, as someone who is not a tech expert and struggled in researching for a new laptop, I found it difficult to start my search because I was not well-versed with what laptops there were. I relied hugely on word of mouth and salesman recommendation to decide on my current laptop, but there may have been better options out there I was simply unaware of! 
+As budget-strapped students, buying our next laptop is a costly investment we should consider wisely. However, as someone who is not a tech expert and struggled in researching for a new laptop, I found it difficult to start my search because I was not well-versed with what laptops there were. I relied hugely on word of mouth and salesman recommendation to decide on my current laptop, but there may have been better options out there I was simply unaware of!
 
 Thus, welcome to my data story, where I take you through the analysis of a csv file, where we can both gain some insights about laptop brands, specifications, prices, and even its weight! Through this journey, I hope we both gain an awareness of what types of laptops there are, and what categories to begin our search in the next time we find ourselves in need of a laptop.
 
-![Source: vGeek](laptop image.jpg)
-
+![Source: vGeek](laptop%20image.jpg)
 
 ## Introducing: Our data
 
@@ -42,6 +41,7 @@ knitr::kable(head(laptop_data))
 This is just a snippet of the entire data set. Let's break it down into simpler visualisations so we understand what it is talking about!
 
 ### Number of Laptop Types by Company
+
 Here are the total number of laptops in the dataset, arranged by the brands that produce them!
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
@@ -67,9 +67,10 @@ ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n, fill = Comp
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
 ```
+
 Personally, I have never heard of brands such as Chuwi, Mediacom or Vero. Have you seen these laptops before?
 
-![Chuwi, mediacom and Vero](three unknown laptops.png)
+![Chuwi, mediacom and Vero](three%20unknown%20laptops.png)
 
 It looks like Vero is an environmentally friendly laptop line from Acer! Let's merge the companies into one for clarity's sake, into a category called Acer&V.
 
@@ -101,57 +102,9 @@ ggplot(total_brands_and_laptops2, aes(x = reorder(Company, n), y = n, fill = Com
   scale_fill_manual(values = brand_colors)
 ```
 
-###Number of Laptop Types by Category of Laptops
-While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
-
-```{r, echo=FALSE, eval=TRUE}
-typename_colour <- c(
-  "2 in 1 Convertible" = "#E3B505", "Gaming" = "#95190C", "Netbook" = "#610345", "Notebook" = "#107E7D", "Ultrabook"="#044B7F", "Workstation"="#D72638"
-)
-
-ggplot(laptop_data, aes(x = TypeName, fill = TypeName)) +
-  geom_bar() +
-  labs(x = "Category", y = "Count", title = "Number of laptops against Category of Laptops") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
-  scale_fill_manual(values = typename_colour)
-
-```
-
-Unsurprisingly, the Notebook category wins by a landslide in terms of quantity produced, with more than 650 types produced. On the other hand, Netbooks and Workstations are lesser produced, and perhaps this means there is a small demand for such laptops!
-
-Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!
-
-
-
-
-
-
-
-## Identified problem statement
-
-I will attempt to answer the question: How many types of laptops do each brand make, and which brands make the most expensive and most affordable types of laptops?
-
-As everyday students who may not understand laptops intimately, when we intend on buying a new laptop, we look at the different types of laptop brands or companies that we heard from word of mouth, or by briefly searching for reviews online. As such, only the most prominent or famous brands stick out (such as Apple or Lenovo), and we never gain a truly representative overview of the types of laptops out there.
-
-As this is typically a big expenditure for students, students should be well informed when making their decision, taking into account the brand reputation, specifications and brand of the laptop. In order to tackle the problem that the everyday student may not have a thorough overview of their options, I have decided to perform data visualisation with this data. 
-```{r}
-#make this less wordy. Use graphs or visualisations to do this instead
-```
-
-
-## Identifying the Evidence
-
-From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
-
-Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data visualisation below.
-
-
-
-
-However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.
+However, there are some companies that produced very little laptops, and they were not relevant to the total analysis. I removed brands who produced less than 20 laptops from the data set.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
-
 brand_nos <- laptop_data %>% 
   group_by(Company) %>% 
   tally() %>% 
@@ -175,10 +128,101 @@ ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
   labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
+```
 
+###Number of Laptop Types by Category of Laptops While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
+
+```{r, echo=FALSE, eval=TRUE}
+typename_colour <- c(
+  "2 in 1 Convertible" = "#E3B505", "Gaming" = "#95190C", "Netbook" = "#610345", "Notebook" = "#107E7D", "Ultrabook"="#044B7F", "Workstation"="#D72638"
+)
+
+ggplot(laptop_data, aes(x = TypeName, fill = TypeName)) +
+  geom_bar() +
+  labs(x = "Category", y = "Count", title = "Number of laptops against Category of Laptops") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_fill_manual(values = typename_colour)
 
 ```
 
+Unsurprisingly, the Notebook category wins by a landslide in terms of quantity produced, with more than 650 types produced. On the other hand, Netbooks and Workstations are lesser produced, and perhaps this means there is a small demand for such laptops!
+
+Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!
+
+###Specifications
+Now, I am also curious about the spread of specifications, such as CPU, RAM, Memory, GPU, OpSys. Let's look at how the laptops are distributed across different CPUs and RAMs.
+
+####CPU
+Given that there are a total of 118 unique CPUs, let's look at the more popular CPU systems; i.e. the CPUs that have been used in more than 40 laptops.
+
+```{r, echo=FALSE, eval=TRUE}
+# Filter out CPUs with counts less than 40
+filtered_data <- laptop_data %>%
+  group_by(Cpu) %>%
+  filter(n() > 40)
+
+# Create a bar plot for the filtered "Cpu" category
+ggplot(filtered_data, aes(x = Cpu)) +
+  geom_bar(fill = "#593F62") +
+  labs(x = "CPU", y = "Count", title = "Number of Laptops by CPU Category (Count > 40)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+####RAM
+No cleaning is needed for RAM -- let's look at how many laptops are produced in
+```{r, eval=TRUE, echo=FALSE}
+# Define the order of RAM categories
+ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
+
+# Convert RAM to a factor with the defined order
+laptop_data$Ram <- factor(laptop_data$Ram, levels = ram_order)
+
+# Create a bar plot for the "Ram" category with sorted values
+ggplot(laptop_data, aes(x = Ram)) +
+  geom_bar(fill = "#A5C4D4") +
+  labs(x = "RAM", y = "Count", title = "Number of Laptops by RAM Category (Sorted)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+Looks like the most popular RAM categories are 4GB, 8GB and 16GB! How interesting that their in-between values like 6GB, 12GB etc are nowhere near as popular.
+
+## More analysis
+
+
+
+## Identifying the Evidence
+
+From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
+
+Hence, I decided to focus on the company producing the laptops, arriving at the problem statement outlined above. In the dataset, there are a total of 19 companies that produce laptops. This can be seen in the data visualisation below.
+
+However, there are some companies that produced very little laptops, and I felt they were not relevant to the total analysis, since the popularity of their products would likely be lower. The few laptop types they produced would also make it difficult to create any conclusive data trends about their products. Hence, I removed brands who produced less than 20 laptops from the dataset.
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE}
+brand_nos <- laptop_data %>% 
+  group_by(Company) %>% 
+  tally() %>% 
+  filter(n>10) %>% 
+  arrange(desc(n))
+
+# Define new colors for the companies
+brand_colors <- c(
+  "Asus" = "#eac435", "HP" = "#345995", "Apple" = "#03cea4", 
+  "Dell" = "#fb4d3d", "Lenovo" = "#ca1551", 
+  "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", 
+  "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", 
+  "Google" = "#ffc6ac", "Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", 
+  "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac", "Mediacom" = "#acf2ff", 
+  "LG" = "#acddff", "Chuwi" = "#acaaff"
+)
+
+#only 9 brands
+ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Company", y = "Number of Laptops", title = "Number of Laptops Produced by Each Company") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = brand_colors)
+```
 
 ## Interpret Exhibits
 
@@ -221,6 +265,7 @@ ggplot(brand_quantity, aes(x = Price, y = reorder(Company, Price), fill = Compan
 ```
 
 ## Apply concepts
+
 ```{r}
 #talk about the difference in the ascending order of box plots and the ascending order of number of laptops produced by each company
 ```
@@ -241,7 +286,7 @@ As a result, we can see from our graphs that comparatively, Lenovo, Dell and HP 
 But why do we need to consider other laptop brands if Apple usually does the job? This is because Apple's average price point, as seen in the second plot, is higher than the averages of the other companies. This indicates that there is a good chance that the laptop you are eyeing from Apple, while it may get the job done, may be excessively expensive. If one is tight on budget, it would be advisable for them to delve into Lenovo, HP or Dell for more varied options.
 
 MSI is a brand that has a higher mean price for their laptops than even Apple, making their laptops the most expensive out of all visible. However, this is likely because they produce gaming laptops, which tend to have higher specs for optimal gameplay, thus adding to the price point of their products.
+
 ```{r}
 #make some sort of visualisation?
 ```
-
