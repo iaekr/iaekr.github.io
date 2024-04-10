@@ -4,9 +4,18 @@ title: "NM2207 Final Data Story"
 
 # What laptops should you buy next?
 
-## Identified Data Set
+Ever got tired of your basic ASUS or HP laptop? Want to look into other options aside from Apple? Or are you simply curious about how many laptops can a company possibly produce? 
 
-I have chosen the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle.
+Welcome to my data story, where I take you through the analysis of a csv file, where we can both gain some insights about laptop brands, specifications, prices, and even its weight!
+
+![taken from vGeek](laptop image.jpg)
+
+
+## Presenting: Our data
+
+With the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle, we can look at every computer that is manufactured this year.
+
+Below is the summary of the data set at hand. There are a total of 12 columns, and we can look each laptop's Company (or brand name), TypeName (Category of laptop), Inches (size of laptop), ScreenResolution (Screen Size), CPU, RAM, Memory, GPU, OpSys, Weight, and Price!
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
 laptop_data <- read.csv("laptop_data.csv")
@@ -17,13 +26,15 @@ suppressMessages({
     library(ggplot2)
     library(dplyr)
     library(readr)
+    library(ggtext)
+    library(ggtext)
 
 options(scipen = 999)
-glimpse(laptop_data)
+knitr::kable(head(laptop_data))
+
   })
 })
 
-#See if you can turn this presentation into a graph of sorts
 ```
 
 ## Identified problem statement
