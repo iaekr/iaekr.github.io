@@ -8,7 +8,9 @@ Ever got tired of your basic ASUS or HP laptop? Want to look into other options 
 
 As budget-strapped students, buying our next laptop is a costly investment we should consider wisely. However, as someone who is not a tech expert and struggled in researching for a new laptop, I found it difficult to start my search because I was not well-versed with what laptops there were. I relied hugely on word of mouth and salesman recommendation to decide on my current laptop, but there may have been better options out there I was simply unaware of!
 
-Thus, welcome to my data story, where I take you through the analysis of a csv file, where we can both gain some insights about laptop brands, specifications, prices, and even its weight! Through this journey, I hope we both gain an awareness of what types of laptops there are, and what categories to begin our search in the next time we find ourselves in need of a laptop.
+![Source: BAM Agency](student no money.jpg)
+
+Thus, welcome to my data story, where I take you through the analysis of a csv file, where we can both gain some insights about laptop brands, specifications, prices, and even its weight! Through this journey, I hope we both gain an awareness of what types of laptops there are, and what categories to begin our search in the next time we find ourselves in need of a laptop. Personally, I'm interested in finding what the most common specs are (i.e. the most basic laptop models) -- that would mark a good place for me to start looking into laptops, and I could start looking for affordable options with the same specs, or for any specific or different specs I may need.
 
 ![Source: vGeek](laptop%20image.jpg)
 
@@ -28,7 +30,10 @@ suppressMessages({
     library(dplyr)
     library(readr)
     library(ggtext)
-    library(ggtext)
+    library(plotly)
+    library(viridis)
+
+
 
 options(scipen = 999)
 knitr::kable(head(laptop_data))
@@ -70,18 +75,15 @@ ggplot(total_brands_and_laptops, aes(x = reorder(Company, n), y = n, fill = Comp
 
 Personally, I have never heard of brands such as Chuwi, Mediacom or Vero. Have you seen these laptops before?
 
-![Chuwi, mediacom and Vero](three%20unknown%20laptops.png)
+![Source: Shopee](three%20unknown%20laptops.png)
 
 It looks like Vero is an environmentally friendly laptop line from Acer! Let's merge the companies into one for clarity's sake, into a category called Acer&V.
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=FALSE}
 total_brands_and_laptops2 <- laptop_data %>%
   mutate(Company = ifelse(Company %in% c("Acer", "Vero"), "Acer&V", Company)) %>%
   group_by(Company) %>%
   tally()
-
-laptop_data2 <- laptop_data %>%
-  mutate(Company = ifelse(Company %in% c("Acer", "Vero"), "Acer&V", Company)) 
 
 # Define new colors for the companies
 brand_colors <- c(
@@ -101,11 +103,13 @@ ggplot(total_brands_and_laptops2, aes(x = reorder(Company, n), y = n, fill = Com
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
 ```
-
-However, there are some companies that produced very little laptops, and they were not relevant to the total analysis. I removed brands who produced less than 20 laptops from the data set.
+There are also many, many companies that produced very little laptops, and I doubt that I would want to buy from these brands. Thus, they're not releavnt to my analysis. I removed brands who produced less than 20 laptops from the data set.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE}
-brand_nos <- laptop_data %>% 
+laptop_data2 <- laptop_data %>%
+  mutate(Company = ifelse(Company %in% c("Acer", "Vero"), "Acer&V", Company)) 
+
+brand_nos <- laptop_data2 %>% 
   group_by(Company) %>% 
   tally() %>% 
   filter(n>10) %>% 
@@ -115,7 +119,7 @@ brand_nos <- laptop_data %>%
 brand_colors <- c(
   "Asus" = "#eac435", "HP" = "#345995", "Apple" = "#03cea4", 
   "Dell" = "#fb4d3d", "Lenovo" = "#ca1551", 
-  "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer" = "#d1a0e3", 
+  "Toshiba" = "#a0d1e3", "MSI" = "#e1a0d1", "Acer&V" = "#d1a0e3", 
   "Samsung" = "#f0c2ff", "Sony" = "#f7a6c2", "Huawei" = "#ffacac", 
   "Google" = "#ffc6ac", "Razer" = "#ffd9ac", "Microsoft" = "#ffe6ac", 
   "Xiaomi" = "#fff4ac", "Fujitsu" = "#e5ffac", "Mediacom" = "#acf2ff", 
@@ -129,70 +133,7 @@ ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = brand_colors)
 ```
-
-### Number of Laptop Types by Category of Laptops
-
-While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
-
-```{r, echo=FALSE, eval=TRUE}
-typename_colour <- c(
-  "2 in 1 Convertible" = "#E3B505", "Gaming" = "#95190C", "Netbook" = "#610345", "Notebook" = "#107E7D", "Ultrabook"="#044B7F", "Workstation"="#D72638"
-)
-
-ggplot(laptop_data, aes(x = TypeName, fill = TypeName)) +
-  geom_bar() +
-  labs(x = "Category", y = "Count", title = "Number of laptops against Category of Laptops") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
-  scale_fill_manual(values = typename_colour)
-```
-
-Unsurprisingly, the Notebook category wins by a landslide in terms of quantity produced, with more than 650 types produced. On the other hand, Netbooks and Workstations are lesser produced, and perhaps this means there is a small demand for such laptops!
-
-Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!
-
-### Specifications
-
-Now, I am also curious about the spread of specifications, such as CPU, RAM, Memory, GPU, OpSys. Let's look at how the laptops are distributed across different CPUs and RAMs.
-
-#### CPU
-
-Given that there are a total of 118 unique CPUs, let's look at the more popular CPU systems; i.e. the CPUs that have been used in more than 40 laptops.
-
-```{r, echo=FALSE, eval=TRUE}
-# Filter out CPUs with counts less than 40
-filtered_data <- laptop_data %>%
-  group_by(Cpu) %>%
-  filter(n() > 40)
-
-# Create a bar plot for the filtered "Cpu" category
-ggplot(filtered_data, aes(x = Cpu)) +
-  geom_bar(fill = "#593F62") +
-  labs(x = "CPU", y = "Count", title = "Number of Laptops by CPU Category (Count > 40)") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-#### RAM
-
-No cleaning is needed for RAM -- let's look at how many laptops are produced in
-
-```{r, eval=TRUE, echo=FALSE}
-# Define the order of RAM categories
-ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
-
-# Convert RAM to a factor with the defined order
-laptop_data$Ram <- factor(laptop_data$Ram, levels = ram_order)
-
-# Create a bar plot for the "Ram" category with sorted values
-ggplot(laptop_data, aes(x = Ram)) +
-  geom_bar(fill = "#A5C4D4") +
-  labs(x = "RAM", y = "Count", title = "Number of Laptops by RAM Category (Sorted)") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-
-Looks like the most popular RAM categories are 4GB, 8GB and 16GB! How interesting that their in-between values like 6GB, 12GB etc. are nowhere near as popular.
-
-## More analysis
+Much better!
 
 ### Price against Brand
 
@@ -231,7 +172,179 @@ Below is the interactive boxplot that allows users to toggle between currencies 
 ```{=html}
 <iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/sample_app_nm2207/"> </iframe>
 ```
-## Identifying the Evidence
+
+
+### Number of Laptop Types by Category of Laptops
+
+While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
+
+```{r, echo=FALSE, eval=TRUE}
+typename_colour <- c(
+  "2 in 1 Convertible" = "#E3B505", "Gaming" = "#95190C", "Netbook" = "#610345", "Notebook" = "#107E7D", "Ultrabook"="#044B7F", "Workstation"="#D72638"
+)
+
+ggplot(laptop_data, aes(x = TypeName, fill = TypeName)) +
+  geom_bar() +
+  labs(x = "Category", y = "Count", title = "Number of laptops against Category of Laptops") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_fill_manual(values = typename_colour)
+```
+
+Unsurprisingly, the Notebook category wins by a landslide in terms of quantity produced, with more than 650 types produced. On the other hand, Netbooks and Workstations are lesser produced, and perhaps this means there is a small demand for such laptops!
+
+Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!
+
+### Specifications
+
+Now, I am also curious about the spread of specifications, such as CPU, RAM, Memory, GPU, OpSys. Since I am a student from CHS (FASS), and have no interest in gaming, specs such as GPU and even Operating Systems are not that important to me. Hence, let's look at how the laptops are distributed across different CPUs and RAMs, as I may consider these specs more heavily than others.
+
+#### CPU
+According to Arm, CPUs, or the Central Processing Unit, is the main component of a laptop that acts as its "brain", running the machine's operating systems and apps. It is key that we find a good CPU for a laptop that we may use for future years!
+
+Given that there are a total of 118 unique CPUs, let's look at the more popular CPU systems; i.e. the CPUs that have been used in more than 40 laptops.
+
+```{r, echo=FALSE, eval=TRUE}
+# Filter out CPUs with counts less than 40
+filtered_data <- laptop_data %>%
+  group_by(Cpu) %>%
+  filter(n() > 40)
+
+# Create a new column in your dataset
+filtered_data$cpu_category <- ifelse(filtered_data$Cpu %in% c("Intel Core i5 7200U 2.5GHz", "Intel Core i7 7500U 2.7GHz", "Intel Core i7 7700HQ 2.8GHz"), "CPUs with <100 laptops", "Other CPUs")
+
+# Plot using the new column
+ggplot(filtered_data, aes(x = Cpu, fill = cpu_category)) +
+  geom_bar() + 
+  scale_fill_manual(values = c("CPUs with <100 laptops" = "#C492B1", "Other CPUs" = "#6D545D")) +
+  labs(x = "CPU", y = "Count", title = "Number of Laptops by CPU Category (Count > 40)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+Based on the graph, I've highlighted the CPUs with more than a 100 produced laptops. These are the Intel Core i5 7200U 2.5GHz, Intel Core i7 7500U 2.7GHz, and Intel Core i7 7700HQ 2.8GH.
+
+### Price against CPU
+
+For the CPUs that have been used in more than 40 laptops (i.e. the more popular CPUs), let's look at their price distribution.
+
+```{r, eval=TRUE, echo=FALSE}
+filtered_data_sgd <- filtered_data %>%
+  mutate(Price = Price * tosgd)
+# Create a new column "cpu_group" based on the CPU names
+filtered_data_sgd <- filtered_data_sgd %>%
+  mutate(cpu_group = case_when(
+    Cpu %in% c("Intel Core i5 7200U 2.5GHz", "Intel Core i7 7500U 2.7GHz", "Intel Core i7 7700HQ 2.8GHz") ~ "Special CPUs",
+    TRUE ~ "Other CPUs"
+  ))
+
+# Plot the boxplot with the new "cpu_group" column for fill
+ggplot(filtered_data_sgd, aes(x = Cpu, y = Price, fill = cpu_group)) +
+  geom_boxplot() +
+  labs(x = "CPU", y = "Price", title = "Price vs. CPU Scatter Plot") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(breaks = seq(500, 3000, by = 500), labels = function(x) ifelse(x %% 500 == 0, as.character(x), "")) +
+  scale_fill_manual(values = c("#6D545D", "#C492B1"), labels = c("Other CPUs", "CPUs with >100 laptops"))
+
+```
+Looks like the CPU that has been produced the most, IntelCore i5 7200U 2.5GHz, remain relatively affordable in its distribution of price, with its mean approaching SGD$1,000. The other two popular CPUs, IntelCore i7 7500U 2.7GHz and IntelCore i7 7700HQ 2.8GHz, have a pricier distribution.
+
+I do know that i7 CPUs perform better than the i5. If the price of my laptop is a bigger concern, I could start with considering the IntelCore i5 7200U 2.5GHz, but if I want a better functioning laptop, I could consider either of the identified i7s.
+
+#### RAM
+According to TechTarget, RAM, or random access memory, is the hardware that provides temporary storage for the operating system (OS), software programs or other data in current use in a laptop so they are quickly accessible to the device's processor. In layman terms, this means that a faster RAM will result in a laptop responding faster to your inputs!
+
+No cleaning is needed for RAM as there are only 9 types of RAM these laptops come in -- let's look at how many laptops are produced in each RAM amount!
+
+```{r, eval=TRUE, echo=FALSE}
+# Define the order of RAM categories
+ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
+
+# Convert RAM to a factor with the defined order
+laptop_data$Ram <- factor(laptop_data$Ram, levels = ram_order)
+
+# Create a bar plot for the "Ram" category with sorted values
+ggplot(laptop_data, aes(x = Ram, fill = Ram)) +
+  geom_bar() +
+  scale_fill_manual(values = c("#F9DC5C", "#E08E45", "#F9DC5C", "#E08E45", "#F9DC5C", "#E08E45", "#F9DC5C", "#F9DC5C", "#F9DC5C"))+
+  labs(x = "RAM", y = "Count", title = "Number of Laptops by RAM Category (Sorted)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+Looks like the most popular RAM categories are 4GB, 8GB and 16GB, highlighted in a darker yellow! How interesting that their in-between values like 6GB, 12GB etc. are nowhere near as popular.
+
+```{r, echo=FALSE, eval=TRUE}
+# Define the order of RAM categories
+ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
+
+# Convert RAM to a factor with the defined order
+laptop_data$Ram <- factor(laptop_data$Ram, levels = ram_order)
+
+
+# Create a bar plot for the "Ram" category with sorted values
+ggplot(laptop_data, aes(x = Ram, y = Price * tosgd, fill = Ram)) +
+  geom_boxplot() +
+  labs(x = "RAM", y = "Price", title = "Price vs. RAM Box Plot") +
+  scale_fill_manual(values = c("#F9DC5C", "#E08E45", "#F9DC5C", "#E08E45", "#F9DC5C", "#E08E45", "#F9DC5C", "#F9DC5C", "#F9DC5C")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+This seems intuitive enough -- the higher the RAM, the more expensive the laptop gets. However, according to the boxplot, it may be possible to get a 16GB RAM laptop that costs the same as another 8GB RAM laptop. We should thus consider this price range when scouting for our high-RAM laptops!
+
+## CPU against RAM
+```{r}
+ggplot(filtered_data_sgd, aes(x = Cpu, y = Ram, color = Price)) +
+  geom_point(size=5) +
+  scale_colour_viridis()+
+  labs(x = "CPU", y = "RAM", color = "Price") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+## Price against Weight
+```{r, echo=FALSE, eval=TRUE}
+filtered_data_sgd <- filtered_data %>%
+  mutate(Price = Price * tosgd)
+
+# Scatter plot of price against weight
+# Assuming 'Weight' is a character or factor variable
+# Remove "kg" and convert to numeric
+filtered_data_sgd$Weight_numeric <- as.numeric(sub("kg", "", as.character(filtered_data_sgd$Weight)))
+
+# Now you can use 'Weight_numeric' in your ggplot
+ggplot(filtered_data_sgd, aes(x = Weight_numeric, y = Price)) +
+  geom_point(color = "#5B8C5A") +
+  labs(x = "Weight (kg)", y = "Price", title = "Price vs. Weight Scatter Plot") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+```{r, echo=FALSE, eval=TRUE}
+
+filtered_data_sgd$Weight_numeric <- as.numeric(sub("kg", "", as.character(filtered_data_sgd$Weight)))
+
+
+# Create a scatter plot
+plot_ly(data = filtered_data_sgd, x = ~Inches, y = ~Weight_numeric, z = ~Price*tosgd,
+        type = "scatter3d", mode = "markers", color = ~Price*tosgd,
+        marker = list(size = 5, opacity = 0.8)) %>%
+  layout(scene = list(xaxis = list(title = "Inches"),
+                      yaxis = list(title = "Weight"),
+                      zaxis = list(title = "Price (SGD)")))
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+# Scatter plot of price against inches
+ggplot(filtered_data_sgd, aes(x = Inches, y = Price)) +
+  geom_point(color = "#C04ABC") +
+  labs(x = "Inches", y = "Price", title = "Price vs. Inches Scatter Plot") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+## References
+https://www.arm.com/glossary/cpu#:~:text=The%20Central%20Processing%20Unit%20(CPU,machine's%20operating%20system%20and%20apps.
+https://www.techtarget.com/searchstorage/definition/RAM-random-access-memory#:~:text=Random%20access%20memory%20(RAM)%20is,available%20to%20the%20device's%20processor.
+
+## old shit
 
 From the glimpse of the dataset here, we see that it includes many specifications such as CPU, Ram, Memory, GPU, the type of Operating System and even Weight, which I had originally intended to use in visualising their effects on the pricing of each computer. However, I realised that these are mostly categorical variables, which is difficult to convert into numerical variables that we can perform meaningful data analysis on.
 
@@ -265,7 +378,9 @@ ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
   scale_fill_manual(values = brand_colors)
 ```
 
-## Interpret Exhibits
+
+
+## Scatter plot: price against weight, or inches
 
 Below is a horizontal table plot of the number of type of laptops that the 8 surviving companies produced. With the sufficient number of data, we can perform further analysis on the laptop types and their prices.
 
