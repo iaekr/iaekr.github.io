@@ -290,7 +290,7 @@ ggplot(laptop_data, aes(x = Ram, y = Price * tosgd, fill = Ram)) +
 This seems intuitive enough -- the higher the RAM, the more expensive the laptop gets. However, according to the boxplot, it may be possible to get a 16GB RAM laptop that costs the same as another 8GB RAM laptop. We should thus consider this price range when scouting for our high-RAM laptops!
 
 ## CPU against RAM
-```{r}
+```{r, echo=FALSE, eval=TRUE}
 ggplot(filtered_data_sgd, aes(x = Cpu, y = Ram, color = Price)) +
   geom_point(size=5) +
   scale_colour_viridis()+
