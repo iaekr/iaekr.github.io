@@ -6,7 +6,7 @@ title: "NM2207 Final Data Story"
 
 Are you a student with little knowledge of tech? Or are you not sure where to start with your next laptop purchase? Want to look into other options aside from expensive Macbooks?
 
-As students, our digital devices are key to our success in school. According to UNiDAYS, 97% of students say that their laptop is vital to their academic success, and 88% of students do research before buying their laptops. However, a significant 65% of students base their next laptop decision off of their previous experiences. This shows that we may be unaware about the options available out there, especially if we have not tried a variety of laptops before.
+As students, our digital devices are key to our success in school. According to UNiDAYS, 97% of students say that their laptop is vital to their academic success, and 88% of students do research before buying their laptops (UNiDAYS, 2021). However, a significant 65% of students base their next laptop decision off of their previous experiences (UNiDAYS, 2021). This shows that we may be unaware about the options available out there, especially if we have not tried a variety of laptops before.
 
 Buying a wrong laptop would be a costly decision as well. We are budget-strapped students after all!
 
@@ -20,7 +20,7 @@ Personally, I'm interested in finding what the most common specs are (i.e. the m
 
 ## Introducing: Our data
 
-With the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle, we can look at every computer that is manufactured this year.
+With the data set named "**Laptop Prices Based on its specifications "** by user Abdul Rehman Amer from the website Kaggle (Amer, 2024), we can look at every computer that is manufactured this year.
 
 Below is the summary of the data set at hand. There are a total of 12 columns, and we can look each laptop's Company (or brand name), TypeName (Category of laptop), Inches (size of laptop), ScreenResolution (Screen Size), CPU, RAM, Memory, GPU, OpSys, Weight, and Price!
 
@@ -203,7 +203,7 @@ Now, I am also curious about the spread of specifications, such as CPU, RAM, Mem
 
 ### Number of Laptops by CPU types
 
-According to Arm, CPUs, or the Central Processing Unit, is the main component of a laptop that acts as its "brain", running the machine's operating systems and apps. It is key that we find a good CPU for a laptop that we may use for future years!
+According to Arm, CPUs, or the Central Processing Unit, is the main component of a laptop that acts as its "brain", running the machine's operating systems and apps (Ltd.). It is key that we find a good CPU for a laptop that we may use for future years!
 
 Given that there are a total of 118 unique CPUs, let's look at the more popular CPU systems; i.e. the CPUs that have been used in more than 40 laptops.
 
@@ -256,7 +256,7 @@ I do know that i7 CPUs perform better than the i5. If the price of my laptop is 
 
 ### Number of Laptops by RAM
 
-According to TechTarget, RAM, or random access memory, is the hardware that provides temporary storage for the operating system (OS), software programs or other data in current use in a laptop so they are quickly accessible to the device's processor. In layman terms, this means that a faster RAM will result in a laptop responding faster to your inputs!
+According to TechTarget, RAM, or random access memory, is the hardware that provides temporary storage for the operating system (OS), software programs or other data in current use in a laptop so they are quickly accessible to the device's processor (Sheldon & Peterson, 2024). In layman terms, this means that a faster RAM will result in a laptop responding faster to your inputs!
 
 No cleaning is needed for RAM as there are only 9 types of RAM these laptops come in -- let's look at how many laptops are produced in each RAM amount!
 
@@ -367,10 +367,10 @@ This data story is not the holy grail to laptop solutions, but as a laptop consu
 
 ## References
 
-<https://www.kaggle.com/datasets/ara001/laptop-prices-based-on-its-specifications>
+Amer, A. R. (2024, March 18). *Laptop prices based on its specifications*. Kaggle. https://www.kaggle.com/datasets/ara001/laptop-prices-based-on-its-specifications
 
-https://www.genzinsights.com/tech-trends-in-student-shopping
+UNiDAYS. (2021, July 7). Tech trends in Student Shopping. Tech trends in student shopping. https://www.genzinsights.com/tech-trends-in-student-shopping 
 
-https://www.arm.com/glossary/cpu
+Ltd., A. (n.d.). What is a central processing unit? – ARM®. https://www.arm.com/glossary/cpu 
 
-https://www.techtarget.com/searchstorage/definition/RAM-random-access-memory
+Sheldon, R., & Peterson, S. (2024, February 21). What is Ram (Random Access Memory)?: Definition from TechTarget. Storage. https://www.techtarget.com/searchstorage/definition/RAM-random-access-memory 
