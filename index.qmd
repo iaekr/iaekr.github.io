@@ -304,6 +304,12 @@ This seems intuitive enough -- the higher the RAM, the more expensive the laptop
 Now, we know that there's a huge distribution of CPU types, and a smaller one for that of RAM. We also know that the higher the RAM GB, the more expensive the laptops tend to get. But is CPU or RAM a bigger influence over the price? Let's take a look.
 
 ```{r, echo=FALSE, eval=TRUE}
+# Define the order of RAM categories
+ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
+
+# Convert RAM to a factor with the defined order
+filtered_data_sgd$Ram <- factor(filtered_data_sgd$Ram, levels = ram_order)
+
 ggplot(filtered_data_sgd, aes(x = Cpu, y = Ram, color = Price)) +
   geom_point(size=5) +
   scale_colour_viridis()+
