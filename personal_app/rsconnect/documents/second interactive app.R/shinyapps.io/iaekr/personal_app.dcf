@@ -1,0 +1,13 @@
+name: personal_app
+title: personal_app
+username: iaekr
+account: iaekr
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11752330
+bundleId: 8491903
+url: https://iaekr.shinyapps.io/personal_app/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData

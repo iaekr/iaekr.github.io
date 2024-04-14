@@ -5,6 +5,7 @@ library(tidyverse)
 
 laptop_data <- read_csv("laptop_data.csv")
 laptop_data
+options(scipen=999)
 
 # Define UI for application
 ui <- fluidPage(

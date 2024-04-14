@@ -1,0 +1,13 @@
+name: interactive_app
+title: interactive_app
+username: iaekr
+account: iaekr
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11752227
+bundleId: 8491879
+url: https://iaekr.shinyapps.io/interactive_app/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|app.R|is this app.r also.R
