@@ -49,7 +49,7 @@ This is just a snippet of the entire data set. As individuals who may have diffe
 Before we delve into the visualisations for each specification, here's a quick box plot of each specification we will investigate, against the prices.
 
 ```{=html}
-<iframe height="400" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/personal_app/"> </iframe>
+<iframe height="600" width="100%" frameborder="no" src="https://iaekr.shinyapps.io/personal_app/"> </iframe>
 ```
 Let's break it down into simpler visualisations so we understand what it is talking about!
 
