@@ -53,7 +53,7 @@ Before we delve into the visualisations for each specification, here's a quick b
 ```
 Let's break it down into simpler visualisations so we understand what it is talking about!
 
-### Number of Laptop Types by Company
+## Number of Laptops by Company
 
 Here are the total number of laptops in the dataset, arranged by the brands that produce them!
 
@@ -145,7 +145,7 @@ ggplot(brand_nos, aes(x = reorder(Company, n), y = n, fill = Company)) +
 
 Much better!
 
-### Price against Brand
+### Company against Laptop Price
 
 Below is the plot of the **number of computers** each **company** produces against the **price of each unit of computers**. Here, we can see which company tends to produce more affordable ranges of computers, and which company tends to produce more expensive range of computers.
 
@@ -177,7 +177,7 @@ We observe some outliers in the data. In the above box plot, while the whiskers 
 
 For example, Lenovo produces one laptop that costs more than \$3,000, unusual as their line of laptops usually range from less than \$500 to less than \$1,000. ASUS also produces two computers that cost around \$1,500, despite its range of products largely falling under \$1,000. We can also see that Apple and MSI are the most consistent in their pricings, as there are no outliers in their box plots. They also happen to have the highest mean prices for their laptops, alongside Toshiba.
 
-### Number of Laptop Types by Category of Laptops
+## Number of Laptop Types by Category of Laptops
 
 While we can look at the data through the lens of the company that produces them, we can also investigate the data through the Category of Laptops.
 
@@ -197,11 +197,11 @@ Unsurprisingly, the Notebook category wins by a landslide in terms of quantity p
 
 Curiously, there are only a little more than 100 2 in 1 Convertible laptops produced. I was once starstruck by the appeal of a 2 in 1, and almost invested in a HP one myself. However, there were one or two very bad reviews, and coupled with the low number of produced laptops of this type, perhaps I will wait until the technology for 2 in 1s are more advanced and reliable!
 
-### Specifications
+## Specifications
 
 Now, I am also curious about the spread of specifications, such as CPU, RAM, Memory, GPU, OpSys. Since I am a student from CHS (FASS), and have no interest in gaming, specs such as GPU and even Operating Systems are not that important to me. Hence, let's look at how the laptops are distributed across different CPUs and RAMs, as I may consider these specs more heavily than others.
 
-#### CPU
+### Number of Laptops by CPU types
 
 According to Arm, CPUs, or the Central Processing Unit, is the main component of a laptop that acts as its "brain", running the machine's operating systems and apps. It is key that we find a good CPU for a laptop that we may use for future years!
 
@@ -226,7 +226,7 @@ ggplot(filtered_data, aes(x = Cpu, fill = cpu_category)) +
 
 Based on the graph, I've highlighted the CPUs with more than a 100 produced laptops. These are the Intel Core i5 7200U 2.5GHz, Intel Core i7 7500U 2.7GHz, and Intel Core i7 7700HQ 2.8GH.
 
-### Price against CPU
+### CPU types against Laptop Prices
 
 For the CPUs that have been used in more than 40 laptops (i.e. the more popular CPUs), let's look at their price distribution.
 
@@ -254,7 +254,7 @@ Looks like the CPU that has been produced the most, IntelCore i5 7200U 2.5GHz, r
 
 I do know that i7 CPUs perform better than the i5. If the price of my laptop is a bigger concern, I could start with considering the IntelCore i5 7200U 2.5GHz, but if I want a better functioning laptop, I could consider either of the identified i7s.
 
-#### RAM
+### Number of Laptops by RAM
 
 According to TechTarget, RAM, or random access memory, is the hardware that provides temporary storage for the operating system (OS), software programs or other data in current use in a laptop so they are quickly accessible to the device's processor. In layman terms, this means that a faster RAM will result in a laptop responding faster to your inputs!
 
@@ -277,6 +277,8 @@ ggplot(laptop_data, aes(x = Ram, fill = Ram)) +
 ```
 
 Looks like the most popular RAM categories are 4GB, 8GB and 16GB, highlighted in a darker yellow! How interesting that their in-between values like 6GB, 12GB etc. are nowhere near as popular.
+
+### RAM against Laptop Prices
 
 ```{r, echo=FALSE, eval=TRUE}
 # Define the order of RAM categories
@@ -311,7 +313,7 @@ ggplot(filtered_data_sgd, aes(x = Cpu, y = Ram, color = Price)) +
 
 It looks like the RAM has a bigger influence over the price, with anything above 16GB easily costing SGD\$2,000 and above. We also see that any CPUs with i7 Cores tend to cost a bit more, though this influence isn't stronger than that of the RAM's. Budget conscious students should thus consider sacrificing RAM speed for a better CPU.
 
-## Price against Weight
+## Weight against Price
 
 Now, let's take a quick look at if weight has any correlation with price!
 
@@ -353,6 +355,22 @@ This interactive 3D plot allows you to explore the data points as you wish. Hove
 
 Personally, I find that my laptops need not be above 15 inches big. It looks like the typical 14-inch laptop can be as light as 1.1kg, and costs less than \$1k! However, we saw from the previous plots the impact of CPU and RAM, which may have resulted in such laptops being cheaper and lighter. Perhaps a good compromise would be a 14-inch laptop approaching the \$1k price tag. Its weight can be a negotiable factor as it depends if the individual user would be concerned over portability!
 
+## Conclusion
+
+There are many considerations to make when buying your next laptop. While the price of the laptop will definitely be a universal consideration among us students, we also have to strike a balance between looking at good quality laptops with durable specifications, and an affordable price point!
+
+While this data story hopes to give one a starting point in analysing the relationship between prices and certain specifications, greater research has to be conducted into each specification in order to discover what individual students may prefer. For example, students who are interesting in gaming laptops ought to consider GPU, a specification not included in this data story! Furthermore, the understanding of specifications covered is not comprehensive based on the data story alone. One cannot tell the experiential difference between 4GB RAM or 32GB RAM just by looking at these plots.
+
+However, I hope to paint a convincing enough picture so that students not well-versed in tech will not pay \$3,000 for a laptop that only holds 4GB RAM, or an IntelCore i5 model. To be familiar with pricing trends per specification is important, so even amateur technology users will at least understand the market price of the specifications they want, and can plan their budgets accordingly!
+
+This data story is not the holy grail to laptop solutions, but as a laptop consumer myself, it shed light onto many insights. I would not have known about the top 3 more popular RAMs in production, or that Apple produces the least number of laptops out of the more popular laptop companies out there. I hope you had fun looking through my graphs, and remember to check this website out when you next buy a laptop!
+
 ## References
 
-https://www.genzinsights.com/tech-trends-in-student-shopping https://www.arm.com/glossary/cpu#:\~:text=The%20Central%20Processing%20Unit%20(CPU,machine's%20operating%20system%20and%20apps. https://www.techtarget.com/searchstorage/definition/RAM-random-access-memory#:\~:text=Random%20access%20memory%20(RAM)%20is,available%20to%20the%20device's%20processor.
+<https://www.kaggle.com/datasets/ara001/laptop-prices-based-on-its-specifications>
+
+https://www.genzinsights.com/tech-trends-in-student-shopping
+
+https://www.arm.com/glossary/cpu
+
+https://www.techtarget.com/searchstorage/definition/RAM-random-access-memory
