@@ -369,8 +369,10 @@ This data story is not the holy grail to laptop solutions, but as a laptop consu
 
 Amer, A. R. (2024, March 18). *Laptop prices based on its specifications*. Kaggle. https://www.kaggle.com/datasets/ara001/laptop-prices-based-on-its-specifications
 
-UNiDAYS. (2021, July 7). Tech trends in Student Shopping. Tech trends in student shopping. https://www.genzinsights.com/tech-trends-in-student-shopping 
-
 Ltd., A. (n.d.). What is a central processing unit? – ARM®. https://www.arm.com/glossary/cpu 
 
 Sheldon, R., & Peterson, S. (2024, February 21). What is Ram (Random Access Memory)?: Definition from TechTarget. Storage. https://www.techtarget.com/searchstorage/definition/RAM-random-access-memory 
+
+UNiDAYS. (2021, July 7). Tech trends in Student Shopping. Tech trends in student shopping. https://www.genzinsights.com/tech-trends-in-student-shopping 
+
+

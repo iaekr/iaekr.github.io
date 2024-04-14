@@ -3,7 +3,7 @@
     "path": "~/University/Y2S2/NM2207/Week 8/iaekr.github.io/index.qmd",
     "project_path": "index.qmd",
     "type": "quarto_markdown",
-    "hash": "498080533",
+    "hash": "2466634423",
     "contents": "",
     "dirty": false,
     "created": 1713086535884.0,
@@ -17,15 +17,15 @@
         "docOutlineVisible": "0",
         "rmdVisualCollapsedChunks": "",
         "rmdVisualModeLocation": "1652:1678",
-        "cursorPosition": "258,381",
-        "scrollLine": "248"
+        "cursorPosition": "374,0",
+        "scrollLine": "363"
     },
     "folds": "",
-    "lastKnownWriteTime": 1713099180,
+    "lastKnownWriteTime": 1713099362,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1713099180435,
+    "last_content_update": 1713099362236,
     "read_only": false,
     "read_only_alternatives": []
 }
