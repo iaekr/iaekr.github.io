@@ -6,6 +6,7 @@ library(readr)
 library(shiny)
 
 laptop_data <- read_csv("laptop_data.csv")
+ram_order <- c("2GB", "4GB", "6GB", "8GB", "12GB", "16GB", "24GB", "32GB", "64GB")
 
 #reduced CPUs and top 9 brands
 filtered_data <- laptop_data %>%
@@ -13,6 +14,10 @@ filtered_data <- laptop_data %>%
   filter(n() > 40) %>%
   mutate(Price = Price * 0.016) %>%
   mutate(Weight_numeric = as.numeric(sub("kg", "", as.character(Weight))))
+
+
+# Convert RAM to a factor with the defined order
+filtered_data$Ram <- factor(filtered_data$Ram, levels = ram_order)
 
 options(scipen=999)
 ui <- fluidPage(

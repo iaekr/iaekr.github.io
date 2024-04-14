@@ -5,7 +5,7 @@ account: iaekr
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 11752330
-bundleId: 8492025
+bundleId: 8492023
 url: https://iaekr.shinyapps.io/personal_app/
 version: 1
 asMultiple: FALSE
