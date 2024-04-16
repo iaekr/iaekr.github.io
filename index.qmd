@@ -299,7 +299,7 @@ ggplot(laptop_data, aes(x = Ram, y = Price * tosgd, fill = Ram)) +
 
 This seems intuitive enough -- the higher the RAM, the more expensive the laptop gets. However, according to the boxplot, it may be possible to get a 16GB RAM laptop that costs the same as another 8GB RAM laptop. We should thus consider this price range when scouting for our high-RAM laptops!
 
-## CPU against RAM
+## CPU and RAM against Price
 
 Now, we know that there's a huge distribution of CPU types, and a smaller one for that of RAM. We also know that the higher the RAM GB, the more expensive the laptops tend to get. But is CPU or RAM a bigger influence over the price? Let's take a look.
 
